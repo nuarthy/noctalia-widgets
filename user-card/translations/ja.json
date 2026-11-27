@@ -254,7 +254,7 @@
     },
     "usercard_color": {
       "label": "アクセント色",
-      "description": "名前とボタンの色。パレットの役割名または16進カラー。"
+      "description": "アバターの頭文字と天気アイコンの色。パレットの役割名または16進カラー。"
     },
     "usercard_shadow": {
       "label": "文字の影",

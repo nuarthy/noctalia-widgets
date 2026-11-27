@@ -97,7 +97,7 @@ dependencies = []
 [[plugin]]
 id           = "nuarthy/user-card"
 name         = "Card User Card"
-version      = "1.0.2"
+version      = "1.0.3"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "user"

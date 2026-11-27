@@ -254,7 +254,7 @@
     },
     "usercard_color": {
       "label": "Accent color",
-      "description": "Palette role or hex color for the name and buttons."
+      "description": "Palette role or hex color for the avatar initial and weather glyph."
     },
     "usercard_shadow": {
       "label": "Text shadow",

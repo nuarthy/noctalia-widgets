@@ -1,7 +1,7 @@
 # Separate Noctalia desktop widget: Card User Card.
 id = "nuarthy/user-card"
 name = "Card User Card"
-version = "1.0.2"
+version = "1.0.3"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

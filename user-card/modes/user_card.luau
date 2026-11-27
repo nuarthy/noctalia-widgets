@@ -172,29 +172,6 @@ local function firstCharacter(text)
     return text:sub(1, 1)
 end
 
-local function avatarNode(name)
-    local path = avatarPath()
-    if path then
-        return ui.image({ path = path, width = 76, height = 76, radius = 16, fit = "cover" })
-    end
-    return ui.column({
-        width = 76,
-        height = 76,
-        fill = "surface_container_high",
-        radius = 16,
-        align = "center",
-        justify = "center",
-    }, {
-        label({
-            text = firstCharacter(name):upper(),
-            fontSize = 30,
-            fontWeight = "bold",
-            color = COLOR,
-            textAlign = "center",
-        }),
-    })
-end
-
 local function uptimeSeconds()
     local text = noctalia.readFile("/proc/uptime")
     if type(text) == "string" then
@@ -249,7 +226,7 @@ end
 local function actionButton(glyph, callback)
     return ui.button({
         glyph = glyph,
-        variant = "secondary",
+        variant = "primary",
         controlSize = "sm",
         onClick = callback,
     })
@@ -261,7 +238,7 @@ local function contentColumn(name)
             text = name,
             fontSize = 17,
             fontWeight = "semibold",
-            color = "on_surface",
+            color = "primary",
             maxLines = 1,
         }),
     }
@@ -299,6 +276,53 @@ local function contentColumn(name)
     end
 
     return ui.column({ gap = 3, flexGrow = 1, align = "stretch" }, info)
+end
+
+-- Noctalia does not expose the widget surface height to scripts. Match the
+-- square avatar to the natural height of the visible content rows instead; the
+-- whole card then scales together when its editor box is resized.
+local function contentColumnHeight()
+    local height = 22 -- name row
+    if SHOW_UPTIME and uptimeSeconds() then
+        height = height + 3 + 13
+    end
+    if SHOW_WEATHER and type(weather) == "table" and weather.ok == true then
+        height = height + 3 + 14 + 3 + 11
+    end
+    if SHOW_ACTIONS then
+        height = height + 3 + 32
+    end
+    return height
+end
+
+local function avatarNode(name)
+    local size = math.max(72, contentColumnHeight() + 6)
+    local path = avatarPath()
+    if path then
+        return ui.image({
+            path = path,
+            width = size,
+            height = size,
+            radius = util.round(size * 0.21),
+            fit = "cover",
+        })
+    end
+    return ui.column({
+        width = size,
+        height = size,
+        fill = "surface_container_high",
+        radius = util.round(size * 0.21),
+        align = "center",
+        justify = "center",
+    }, {
+        label({
+            text = firstCharacter(name):upper(),
+            fontSize = util.round(size * 0.4),
+            fontWeight = "bold",
+            color = COLOR,
+            textAlign = "center",
+        }),
+    })
 end
 
 local function render()
