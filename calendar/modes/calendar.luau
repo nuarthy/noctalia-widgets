@@ -35,9 +35,9 @@ local function gridStart()
     return first - offset * 86400
 end
 
-local function dateLabel(day, inMonth, isToday, cellWidth)
+local function dateLabel(day, inMonth, isToday)
     return ui.column({
-        width = cellWidth,
+        flexGrow = 1,
         height = 30,
         fill = isToday and COLOR or nil,
         radius = 6,
@@ -56,7 +56,7 @@ local function dateLabel(day, inMonth, isToday, cellWidth)
     })
 end
 
-local function weekdayHeader(inner, cellWidth, gap)
+local function weekdayHeader(inner, gap)
     local monday = os.time({ year = 2024, month = 1, day = 1, hour = 12 })
     local base = WEEK_START == "monday" and monday or monday - 86400
     local row = {}
@@ -66,7 +66,7 @@ local function weekdayHeader(inner, cellWidth, gap)
             fontSize = 9,
             color = TEXT_COLOR,
             opacity = 0.55,
-            width = cellWidth,
+            flexGrow = 1,
             textAlign = "center",
             maxLines = 1,
         })
@@ -84,7 +84,6 @@ local function render()
     local year, month = shownMonth()
     local inner = WIDTH - 12
     local gap = 2
-    local cellWidth = math.floor((inner - gap * 6) / 7)
     local today = os.date("*t")
     local start = gridStart()
 
@@ -121,7 +120,7 @@ local function render()
 
     local children = {
         ui.row({ gap = 4, align = "center", width = inner }, header),
-        weekdayHeader(inner, cellWidth, gap),
+        weekdayHeader(inner, gap),
     }
 
     for rowIndex = 0, 5 do
@@ -131,7 +130,7 @@ local function render()
             local date = os.date("*t", timestamp)
             local inMonth = date.month == month and date.year == year
             local isToday = date.year == today.year and date.month == today.month and date.day == today.day
-            row[#row + 1] = dateLabel(date.day, inMonth, isToday, cellWidth)
+            row[#row + 1] = dateLabel(date.day, inMonth, isToday)
         end
         children[#children + 1] = ui.row({ gap = gap, align = "center", width = inner }, row)
     end
