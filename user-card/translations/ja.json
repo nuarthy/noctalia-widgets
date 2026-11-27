@@ -238,7 +238,7 @@
     },
     "usercard_avatar": {
       "label": "アバター",
-      "description": "画像ファイル。空欄なら AccountsService のアイコン、~/.face、頭文字の順に使います。"
+      "description": "画像ファイル。空の場合は Noctalia のアバター、AccountsService、~/.face、または頭文字を使用します。"
     },
     "usercard_show_weather": {
       "label": "天気を表示",

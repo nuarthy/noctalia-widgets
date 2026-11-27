@@ -1,0 +1,356 @@
+{
+  "settings": {
+    "mode": {
+      "label": "Mode",
+      "description": "Which widget this instance shows. Each instance keeps its own settings.",
+      "options": {
+        "clock": "Clock",
+        "weather": "Weather",
+        "system": "System",
+        "media": "Media",
+        "world_clock": "World clock",
+        "calendar": "Calendar",
+        "user_card": "User card"
+      }
+    },
+    "weather_location": {
+      "label": "Weather location",
+      "description": "City name, or latitude,longitude. Leave empty to use the shell Location address, then Jakarta."
+    },
+    "weather_units": {
+      "label": "Units",
+      "description": "Temperature and wind units used by the weather widget and the user card.",
+      "options": {
+        "metric": "Metric (°C, km/h)",
+        "imperial": "Imperial (°F, mph)"
+      }
+    },
+    "weather_refresh": {
+      "label": "Refresh interval",
+      "description": "Minutes between Open-Meteo requests."
+    },
+    "clock_style": {
+      "label": "Style",
+      "description": "Digital shows one time line, stacked splits hours and minutes, compact drops the date.",
+      "options": {
+        "digital": "Digital",
+        "stacked": "Stacked",
+        "compact": "Compact"
+      }
+    },
+    "clock_show_seconds": {
+      "label": "Show seconds",
+      "description": "Add a seconds readout and tick once per second."
+    },
+    "clock_show_date": {
+      "label": "Show date",
+      "description": "Show the date line."
+    },
+    "clock_date_format": {
+      "label": "Date format",
+      "description": "strftime pattern, for example %a, %b %-d."
+    },
+    "clock_time_format": {
+      "label": "Time format",
+      "description": "Leave empty to follow the shell time format."
+    },
+    "clock_timezone": {
+      "label": "Timezone",
+      "description": "IANA name such as Asia/Jakarta. Leave empty for local time."
+    },
+    "clock_color": {
+      "label": "Time color",
+      "description": "Palette role or hex color for the time."
+    },
+    "clock_date_color": {
+      "label": "Date color",
+      "description": "Palette role or hex color for the date."
+    },
+    "clock_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "clock_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels. 0 uses the style default."
+    },
+    "weather_show_forecast": {
+      "label": "Show forecast",
+      "description": "Add a row of upcoming days."
+    },
+    "weather_forecast_days": {
+      "label": "Forecast days",
+      "description": "How many days the forecast row shows."
+    },
+    "weather_show_details": {
+      "label": "Show details",
+      "description": "Show humidity, wind and rain probability."
+    },
+    "weather_show_feels": {
+      "label": "Show feels like",
+      "description": "Show the apparent temperature beside the location."
+    },
+    "weather_color": {
+      "label": "Accent color",
+      "description": "Palette role or hex color for the temperature and weather glyph."
+    },
+    "weather_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "weather_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels."
+    },
+    "system_metric": {
+      "label": "Metric",
+      "description": "Which resource the tile shows. All shows CPU, RAM and battery rows.",
+      "options": {
+        "cpu": "CPU",
+        "ram": "RAM",
+        "battery": "Battery",
+        "all": "All"
+      }
+    },
+    "system_color": {
+      "label": "Accent color",
+      "description": "Palette role or hex color. Error and tertiary replace it at warning levels."
+    },
+    "system_show_detail": {
+      "label": "Show details",
+      "description": "Show temperature and frequency, memory totals, or battery state."
+    },
+    "system_show_bar": {
+      "label": "Show progress bar",
+      "description": "Draw a bar under the value."
+    },
+    "system_warn_threshold": {
+      "label": "Warning threshold",
+      "description": "CPU and RAM percentages at or above this value turn error-colored."
+    },
+    "system_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "system_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels. 0 uses the metric default."
+    },
+    "media_show_art": {
+      "label": "Show artwork",
+      "description": "Show the current track's album art."
+    },
+    "media_show_progress": {
+      "label": "Show progress",
+      "description": "Draw a playback position bar."
+    },
+    "media_color": {
+      "label": "Accent color",
+      "description": "Palette role or hex color for the progress bar and play button."
+    },
+    "media_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "media_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels."
+    },
+    "world_zones": {
+      "label": "Zones",
+      "description": "One entry per zone as Label=IANA/Zone, or just the IANA zone. Examples: Tokyo=Asia/Tokyo, Europe/London."
+    },
+    "world_show_local": {
+      "label": "Show local time",
+      "description": "Show the large local clock above the zone list."
+    },
+    "world_local_label": {
+      "label": "Local label",
+      "description": "Label above the local time. Leave empty to use the shell Location address, then Local."
+    },
+    "world_show_date": {
+      "label": "Show date",
+      "description": "Show the local date under the local time."
+    },
+    "world_date_format": {
+      "label": "Date format",
+      "description": "strftime pattern, for example %A, %B %-d."
+    },
+    "world_time_format": {
+      "label": "Time format",
+      "description": "Leave empty to follow the shell time format."
+    },
+    "world_show_gmt": {
+      "label": "Show GMT offset",
+      "description": "Show each zone's current offset, such as GMT+9."
+    },
+    "world_columns": {
+      "label": "Columns",
+      "description": "Lay the zones out in one or two columns.",
+      "options": {
+        "1": "One column",
+        "2": "Two columns"
+      }
+    },
+    "world_color": {
+      "label": "Time color",
+      "description": "Palette role or hex color for the clock values."
+    },
+    "world_secondary_color": {
+      "label": "Label color",
+      "description": "Palette role or hex color for labels, dates and offsets."
+    },
+    "world_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "world_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels."
+    },
+    "calendar_week_start": {
+      "label": "Week starts",
+      "description": "First column of the month grid.",
+      "options": {
+        "monday": "Monday",
+        "sunday": "Sunday"
+      }
+    },
+    "calendar_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels."
+    },
+    "calendar_color": {
+      "label": "Accent color",
+      "description": "Palette role or hex color for today and the month controls."
+    },
+    "calendar_text_color": {
+      "label": "Text color",
+      "description": "Palette role or hex color for day numbers."
+    },
+    "calendar_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "usercard_name": {
+      "label": "Display name",
+      "description": "Override the name read from the accounts service."
+    },
+    "usercard_avatar": {
+      "label": "Avatar",
+      "description": "Image file. Leave empty to use Noctalia's avatar, AccountsService, ~/.face, or an initial."
+    },
+    "usercard_show_weather": {
+      "label": "Show weather",
+      "description": "Show the current temperature and condition."
+    },
+    "usercard_show_uptime": {
+      "label": "Show uptime",
+      "description": "Show how long the system has been running."
+    },
+    "usercard_show_actions": {
+      "label": "Show actions",
+      "description": "Show lock, settings and power buttons."
+    },
+    "usercard_color": {
+      "label": "Accent color",
+      "description": "Palette role or hex color for the name and buttons."
+    },
+    "usercard_shadow": {
+      "label": "Text shadow",
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
+    },
+    "usercard_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels."
+    },
+    "converter_input": {
+      "label": "Input image",
+      "description": "Image file to convert. Choose it here because desktop widgets cannot receive file drops."
+    },
+    "converter_format": {
+      "label": "Output format",
+      "description": "Target image format.",
+      "options": {
+        "webp": "WebP",
+        "png": "PNG",
+        "jpg": "JPG",
+        "avif": "AVIF"
+      }
+    },
+    "converter_show_preview": {
+      "label": "Show preview",
+      "description": "Show a thumbnail of the input image."
+    },
+    "converter_width": {
+      "label": "Width",
+      "description": "Content width in logical pixels."
+    }
+  },
+  "weather": {
+    "unavailable": "Weather unavailable",
+    "loading": "Loading weather…",
+    "feels": "Feels like {temp}",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "precip": "Rain",
+    "updated": "Updated {age}",
+    "refresh": "Refresh weather",
+    "now": "now",
+    "minutes_ago": "{count} min ago",
+    "hours_ago": "{count} h ago",
+    "condition": {
+      "clear": "Clear",
+      "mainly_clear": "Mostly clear",
+      "partly": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "freezing": "Freezing",
+      "rain": "Rain",
+      "snow": "Snow",
+      "showers": "Showers",
+      "storm": "Thunderstorm"
+    }
+  },
+  "media": {
+    "idle_title": "Awaits for another vibe",
+    "idle_subtitle": "Where words fail, music speaks",
+    "unknown_title": "Unknown title",
+    "unknown_artist": "Unknown artist"
+  },
+  "system": {
+    "cpu": "CPU",
+    "ram": "RAM",
+    "battery": "Battery",
+    "monitor_off": "System monitor is off",
+    "monitor_off_hint": "Enable it under Settings → System Monitor.",
+    "no_battery": "No battery found",
+    "charging": "Charging",
+    "discharging": "Discharging",
+    "full": "Fully charged",
+    "not_charging": "Not charging"
+  },
+  "world": {
+    "local": "Local",
+    "no_zones": "Add a zone in the widget settings."
+  },
+  "calendar": {
+    "today": "Today"
+  },
+  "usercard": {
+    "days": "{count}d",
+    "hours": "{count}h",
+    "minutes": "{count}m"
+  },
+  "converter": {
+    "title": "Image Converter",
+    "no_input": "Choose an image in the widget settings.",
+    "ready": "Ready to convert.",
+    "converting": "Converting...",
+    "saved": "Saved {name}",
+    "failed": "Conversion failed. Install ImageMagick or FFmpeg.",
+    "convert": "Convert",
+    "format": "Format"
+  }
+}

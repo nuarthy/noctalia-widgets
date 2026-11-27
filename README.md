@@ -1,6 +1,6 @@
 # noctalia-widgets
 
-Nine separate Noctalia desktop widgets, ported from
+Ten separate Noctalia desktop widgets, ported from
 [nuarthy/dms-widgets](https://github.com/nuarthy/dms-widgets). Each card is its
 own plugin, so each name appears separately in the desktop-widget type picker.
 
@@ -15,6 +15,7 @@ own plugin, so each name appears separately in the desktop-widget type picker.
 | Card World Clock | `nuarthy/world-clock` | Local time plus configurable IANA zones |
 | Card Calendar | `nuarthy/calendar` | Six-row month grid with today highlighted |
 | Card User Card | `nuarthy/user-card` | Avatar, name, uptime, weather and session actions |
+| Card Image Converter | `nuarthy/image-converter` | Convert a selected image to WebP, PNG, JPG or AVIF |
 
 Noctalia versions before 5.5 label every desktop widget from one plugin with
 the plugin's manifest name. Separate manifests are therefore required for
@@ -47,6 +48,7 @@ noctalia msg plugins enable nuarthy/media
 noctalia msg plugins enable nuarthy/world-clock
 noctalia msg plugins enable nuarthy/calendar
 noctalia msg plugins enable nuarthy/user-card
+noctalia msg plugins enable nuarthy/image-converter
 ```
 
 ### Local checkout with symlinks
@@ -64,6 +66,7 @@ ln -sfn ~/Projects/noctalia-widgets/media        ~/.local/share/noctalia/plugins
 ln -sfn ~/Projects/noctalia-widgets/world-clock  ~/.local/share/noctalia/plugins/world-clock
 ln -sfn ~/Projects/noctalia-widgets/calendar     ~/.local/share/noctalia/plugins/calendar
 ln -sfn ~/Projects/noctalia-widgets/user-card    ~/.local/share/noctalia/plugins/user-card
+ln -sfn ~/Projects/noctalia-widgets/image-converter ~/.local/share/noctalia/plugins/image-converter
 ```
 
 Then enable them:
@@ -78,6 +81,7 @@ noctalia msg plugins enable nuarthy/media
 noctalia msg plugins enable nuarthy/world-clock
 noctalia msg plugins enable nuarthy/calendar
 noctalia msg plugins enable nuarthy/user-card
+noctalia msg plugins enable nuarthy/image-converter
 ```
 
 Add each card from the desktop-widget editor. Every plugin appears under its
@@ -102,10 +106,11 @@ cards:
   "Phase 2" placeholders.
 - `board`, `presets` and `presets-button` manage DMS layouts. Noctalia's
   desktop editor owns layout, so these have no equivalent.
-- `converter` depends on external file drops. The Noctalia desktop-widget API
-  does not expose OS drag-and-drop.
+- The original `converter` depends on external file drops. **Card Image
+  Converter** uses an image setting and a Convert button instead; Noctalia
+  desktop widgets do not expose OS drag-and-drop.
 
-The nine cards above are the working, portable set. CPU, RAM and battery are
+The ten cards above are the working, portable set. CPU, RAM and battery are
 separate plugins instead of one mode-switched card.
 
 ## Layout

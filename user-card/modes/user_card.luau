@@ -19,6 +19,7 @@ local WIDTH = util.clamp(tonumber(noctalia.getConfig("usercard_width")) or 330, 
 
 local USER = noctalia.getenv("USER") or ""
 local HOME = noctalia.expandPath("~")
+local CACHE_HOME = noctalia.getenv("XDG_CACHE_HOME") or (HOME .. "/.cache")
 local weather = noctalia.state.get("nw.weather")
 
 local function label(props)
@@ -76,25 +77,83 @@ local function displayName()
     return "user"
 end
 
+local function existingFile(path)
+    if type(path) ~= "string" or path == "" or not noctalia.fileExists(path) then
+        return nil
+    end
+    local info = noctalia.fileInfo(path)
+    if type(info) == "table" and info.isDir then
+        return nil
+    end
+    return path
+end
+
+local function iconPath(icon)
+    if type(icon) ~= "string" or icon == "" then
+        return nil
+    end
+    local candidates = {}
+    if icon:sub(1, 1) == "/" or icon:sub(1, 1) == "~" then
+        candidates[#candidates + 1] = noctalia.expandPath(icon)
+    else
+        candidates[#candidates + 1] = "/var/lib/AccountsService/icons/" .. icon
+    end
+    local base = candidates[1]
+    if base and not base:match("%.[%w]+$") then
+        for _, extension in ipairs({ ".png", ".jpg", ".jpeg", ".webp", ".svg" }) do
+            candidates[#candidates + 1] = base .. extension
+        end
+    end
+    for _, candidate in ipairs(candidates) do
+        local path = existingFile(candidate)
+        if path then
+            return path
+        end
+    end
+    return nil
+end
+
 local function avatarPath()
     if AVATAR_OVERRIDE ~= "" then
-        local path = noctalia.expandPath(AVATAR_OVERRIDE)
-        if noctalia.fileExists(path) then
+        local path = existingFile(noctalia.expandPath(AVATAR_OVERRIDE))
+        if path then
+            return path
+        end
+    end
+
+    -- Noctalia's own Settings -> Shell -> General avatar.
+    local shellAvatar = noctalia.getSetting("shell.avatar_path")
+    if type(shellAvatar) == "string" and util.trim(shellAvatar) ~= "" then
+        local path = existingFile(noctalia.expandPath(util.trim(shellAvatar)))
+        if path then
             return path
         end
     end
 
     local _, icon = accountsInfo()
-    if icon and icon ~= "" and (icon:sub(1, 1) == "/" or icon:sub(1, 1) == "~") then
-        local path = noctalia.expandPath(icon)
-        if noctalia.fileExists(path) then
+    local path = iconPath(icon)
+    if path then
+        return path
+    end
+
+    -- AccountsService often stores only a relative icon name, or the icon file
+    -- without an extension.
+    local iconRoot = "/var/lib/AccountsService/icons/"
+    if USER ~= "" then
+        path = iconPath(iconRoot .. USER)
+        if path then
             return path
         end
     end
 
-    for _, candidate in ipairs({ HOME .. "/.face", HOME .. "/.face.icon" }) do
-        if noctalia.fileExists(candidate) then
-            return candidate
+    for _, candidate in ipairs({
+        HOME .. "/.face",
+        HOME .. "/.face.icon",
+        CACHE_HOME .. "/noctalia/avatar.png",
+    }) do
+        path = existingFile(candidate)
+        if path then
+            return path
         end
     end
     return nil

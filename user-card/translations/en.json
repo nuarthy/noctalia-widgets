@@ -238,7 +238,7 @@
     },
     "usercard_avatar": {
       "label": "Avatar",
-      "description": "Image file. Leave empty to use the accounts service icon, ~/.face, or an initial."
+      "description": "Image file. Leave empty to use Noctalia's avatar, AccountsService, ~/.face, or an initial."
     },
     "usercard_show_weather": {
       "label": "Show weather",

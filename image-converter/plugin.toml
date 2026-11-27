@@ -1,0 +1,47 @@
+# Separate Noctalia desktop widget: Card Image Converter.
+id = "nuarthy/image-converter"
+name = "Card Image Converter"
+version = "1.0.1"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "image"
+description = "Convert a selected image to WebP, PNG, JPG or AVIF with ImageMagick or FFmpeg."
+tags = ["desktop", "image", "converter"]
+dependencies = []
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "converter_input"
+type = "file"
+label_key = "settings.converter_input.label"
+description_key = "settings.converter_input.description"
+default = ""
+extensions = [".png", ".jpg", ".jpeg", ".webp", ".avif", ".gif", ".bmp", ".tif", ".tiff"]
+
+[[desktop_widget.setting]]
+key = "converter_format"
+type = "select"
+label_key = "settings.converter_format.label"
+description_key = "settings.converter_format.description"
+default = "webp"
+options = [{ value = "webp", label_key = "settings.converter_format.options.webp" }, { value = "png", label_key = "settings.converter_format.options.png" }, { value = "jpg", label_key = "settings.converter_format.options.jpg" }, { value = "avif", label_key = "settings.converter_format.options.avif" }]
+
+[[desktop_widget.setting]]
+key = "converter_show_preview"
+type = "bool"
+label_key = "settings.converter_show_preview.label"
+description_key = "settings.converter_show_preview.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "converter_width"
+type = "int"
+label_key = "settings.converter_width.label"
+description_key = "settings.converter_width.description"
+default = 255
+min = 200
+max = 600
