@@ -22,8 +22,7 @@ local HOME = noctalia.expandPath("~")
 local weather = noctalia.state.get("nw.weather")
 
 local function label(props)
-    props.shadow = SHADOW
-    return ui.label(props)
+    return ui.label(util.withShadow(props, SHADOW))
 end
 
 local function accountsInfo()

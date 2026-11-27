@@ -21,7 +21,7 @@ entry ships seven modes and one shared weather service:
 | ID | `nuarthy/noctalia-widgets` |
 | Desktop widget | `widget` (select a Mode: `clock`, `weather`, `system`, `media`, `world_clock`, `calendar`, `user_card`) |
 | Service | `weather_service` (headless Open-Meteo client) |
-| Plugin API | 51 |
+| Plugin API | 43 |
 
 Noctalia labels every plugin desktop widget with the plugin name, so seven
 separate entries would appear as seven identical rows in the type picker. This
@@ -34,11 +34,14 @@ The UI strings ship in English and Japanese (`translations/`).
 
 ## Requirements
 
-- Noctalia 5.5.0 or newer (`plugin_api = 51`, needed for `noctalia.mediaPlayer()`).
+- Noctalia 5.4.0 or newer (`plugin_api = 43`).
+- `playerctl` for the media widget on Noctalia 5.4. Noctalia 5.5+ uses the native
+  `noctalia.mediaPlayer()` API instead.
 - Network access for the weather service (Open-Meteo, no API key).
 - `[system.monitor]` enabled under **Settings → System Monitor** for the CPU and
   RAM tiles. The battery tile reads `/sys/class/power_supply` directly.
 - An MPRIS player for the media widget.
+- Text shadow requires Noctalia 5.5 or newer.
 
 ## Usage
 
@@ -56,8 +59,9 @@ noctalia msg plugins source add nuarthy-widgets path ~/Projects/noctalia-widgets
 noctalia msg plugins enable nuarthy/noctalia-widgets
 ```
 
-Then open **Settings → Desktop Widgets**, add a **Desktop Widgets** instance,
-and set **Mode**. Place, resize and rotate the card in the editor; the script
+Then open the desktop-widget editor (**Settings → Desktop → Toggle Editor**),
+add a **Desktop Widgets** instance, and set **Mode**. Place, resize and rotate
+the card in the editor; the script
 owns only the content. Add another instance for each further card.
 
 ## Settings

@@ -68,7 +68,7 @@
     },
     "clock_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "clock_width": {
       "label": "幅",
@@ -96,7 +96,7 @@
     },
     "weather_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "weather_width": {
       "label": "幅",
@@ -130,7 +130,7 @@
     },
     "system_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "system_width": {
       "label": "幅",
@@ -150,7 +150,7 @@
     },
     "media_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "media_width": {
       "label": "幅",
@@ -202,7 +202,7 @@
     },
     "world_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "world_width": {
       "label": "幅",
@@ -230,7 +230,7 @@
     },
     "calendar_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "usercard_name": {
       "label": "表示名",
@@ -258,7 +258,7 @@
     },
     "usercard_shadow": {
       "label": "文字の影",
-      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。Noctalia 5.5 以降が必要です。"
     },
     "usercard_width": {
       "label": "幅",

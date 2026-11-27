@@ -68,7 +68,7 @@
     },
     "clock_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "clock_width": {
       "label": "Width",
@@ -96,7 +96,7 @@
     },
     "weather_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "weather_width": {
       "label": "Width",
@@ -130,7 +130,7 @@
     },
     "system_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "system_width": {
       "label": "Width",
@@ -150,7 +150,7 @@
     },
     "media_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "media_width": {
       "label": "Width",
@@ -202,7 +202,7 @@
     },
     "world_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "world_width": {
       "label": "Width",
@@ -230,7 +230,7 @@
     },
     "calendar_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "usercard_name": {
       "label": "Display name",
@@ -258,7 +258,7 @@
     },
     "usercard_shadow": {
       "label": "Text shadow",
-      "description": "Draw a shadow behind the text for readability on wallpapers."
+      "description": "Draw a shadow behind the text for readability on wallpapers. Requires Noctalia 5.5 or newer."
     },
     "usercard_width": {
       "label": "Width",

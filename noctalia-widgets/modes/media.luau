@@ -3,10 +3,11 @@
 --
 -- The DMS original polled Quickshell's MprisController and drew a cava
 -- visualizer. This port reads Noctalia's active MPRIS player through
--- noctalia.mediaPlayer() and sends transport commands through the shell IPC, so
--- it controls the same player the bar and control center use. The visualizer is
--- left to Noctalia's built-in audio_visualizer widget; a plugin desktop widget
--- has no audio-spectrum callback.
+-- noctalia.mediaPlayer() on Noctalia 5.5+, and falls back to `playerctl` on
+-- Noctalia 5.4. Transport commands go through the shell IPC, so they control the
+-- same player the bar and control center use. The visualizer is left to
+-- Noctalia's built-in audio_visualizer widget; a plugin desktop widget has no
+-- audio-spectrum callback.
 
 local util = require("../lib/util.luau")
 
@@ -17,18 +18,24 @@ local SHADOW = noctalia.getConfig("media_shadow") == true
 local WIDTH = util.clamp(tonumber(noctalia.getConfig("media_width")) or 340, 240, 900)
 local ART_SIZE = 100
 
+local NATIVE_MEDIA = util.hasApi51()
+local PLAYERCTL = not NATIVE_MEDIA and noctalia.commandExists("playerctl")
+local PLAYERCTL_FORMAT =
+    "{{playerName}}\t{{status}}\t{{title}}\t{{artist}}\t{{mpris:artUrl}}\t{{mpris:length}}\t{{position}}"
+
 local player = nil
 local artUrl = ""
 local artPath = nil
 local artRequest = ""
 local lastTrackKey = ""
 local updateInterval = 0
+local refreshing = false
+local warnedNoPlayerctl = false
 
 local render
 
 local function label(props)
-    props.shadow = SHADOW
-    return ui.label(props)
+    return ui.label(util.withShadow(props, SHADOW))
 end
 
 local function artDir()
@@ -299,8 +306,7 @@ local function setInterval(value)
     end
 end
 
-local function refreshPlayer()
-    local nextPlayer = noctalia.mediaPlayer()
+local function applyPlayer(nextPlayer)
     if nextPlayer then
         player = nextPlayer
         local key = table.concat({
@@ -324,6 +330,37 @@ local function refreshPlayer()
         setInterval(3000)
     end
     render()
+end
+
+local function refreshPlayerctl()
+    if refreshing then
+        return
+    end
+    refreshing = true
+    local started = noctalia.runAsync({ "playerctl", "metadata", "--format", PLAYERCTL_FORMAT }, function(result)
+        refreshing = false
+        applyPlayer(result.exitCode == 0 and util.parsePlayerctl(result.stdout) or nil)
+    end)
+    if not started then
+        refreshing = false
+        applyPlayer(nil)
+    end
+end
+
+local function refreshPlayer()
+    if NATIVE_MEDIA then
+        applyPlayer(noctalia.mediaPlayer())
+        return
+    end
+    if not PLAYERCTL then
+        if not warnedNoPlayerctl then
+            warnedNoPlayerctl = true
+            noctalia.log("media: playerctl not found; install it for Noctalia 5.4 MPRIS support")
+        end
+        applyPlayer(nil)
+        return
+    end
+    refreshPlayerctl()
 end
 
 local function onPrevious()

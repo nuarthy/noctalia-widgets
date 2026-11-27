@@ -70,15 +70,15 @@ local function rootWidth()
 end
 
 local function textLabel(text, size, color, weight)
-    return ui.label({
+    local props = {
         text = text,
         fontSize = size,
         color = color,
         fontWeight = weight or "normal",
-        shadow = SHADOW,
         textAlign = "center",
         maxLines = 1,
-    })
+    }
+    return ui.label(util.withShadow(props, SHADOW))
 end
 
 local function dateLabel()

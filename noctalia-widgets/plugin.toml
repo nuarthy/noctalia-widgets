@@ -5,13 +5,14 @@
 # entries would all read "Desktop Widgets" in the type picker; one mode-switched
 # entry keeps a single picker row and per-instance settings.
 #
-# plugin_api = 51 covers noctalia.mediaPlayer(), the declarative text shadow and
-# the current color roles (Noctalia 5.5.0 or newer).
+# plugin_api = 43 keeps Noctalia 5.4 working. The media widget probes
+# noctalia.mediaPlayer() (API 51) at runtime and falls back to playerctl on 5.4.
+# Text shadow uses the same probe and is inactive on 5.4.
 
 id = "nuarthy/noctalia-widgets"
 name = "Desktop Widgets"
-version = "1.0.0"
-plugin_api = 51
+version = "1.0.1"
+plugin_api = 43
 author = "nuarthy"
 license = "MIT"
 icon = "layout-grid"

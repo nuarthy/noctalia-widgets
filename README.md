@@ -1,6 +1,6 @@
 # noctalia-widgets
 
-Noctalia v5 plugin that ports [nuarthy/dms-widgets](https://github.com/nuarthy/dms-widgets)
+Noctalia 5.4+ plugin that ports [nuarthy/dms-widgets](https://github.com/nuarthy/dms-widgets)
 from DankMaterialShell to Noctalia's declarative desktop widgets. It ships one
 desktop entry with seven modes (clock, weather, system, media, world clock,
 calendar, user card) and a shared weather service.

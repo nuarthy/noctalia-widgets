@@ -232,4 +232,49 @@ function M.exec(command)
     noctalia.runAsync(argv)
 end
 
+-- mediaPlayer() and ui.label shadow both arrived with plugin API 51. Noctalia 5.4
+-- has neither, so probe mediaPlayer() to keep one build compatible with both.
+local api51
+function M.hasApi51()
+    if api51 == nil then
+        api51 = type(noctalia.mediaPlayer) == "function"
+    end
+    return api51
+end
+
+function M.withShadow(props, enabled)
+    if enabled and M.hasApi51() then
+        props.shadow = true
+    end
+    return props
+end
+
+-- Parse one `playerctl metadata --format` line. Returns nil when playerctl
+-- printed no usable player row.
+function M.parsePlayerctl(line)
+    local source = tostring(line or ""):gsub("[\r\n]+$", "")
+    local fields = {}
+    for field in (source .. "\t"):gmatch("([^\t]*)\t") do
+        fields[#fields + 1] = field
+    end
+    if #fields < 7 then
+        return nil
+    end
+
+    local status = fields[2]
+    if status ~= "" then
+        status = status:sub(1, 1):upper() .. status:sub(2):lower()
+    end
+    local artist = fields[4]
+    return {
+        busName = fields[1],
+        status = status,
+        title = fields[3],
+        artists = artist ~= "" and { artist } or {},
+        artUrl = fields[5],
+        lengthMs = (tonumber(fields[6]) or 0) / 1000,
+        positionMs = (tonumber(fields[7]) or 0) / 1000,
+    }
+end
+
 return M

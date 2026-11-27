@@ -16,8 +16,7 @@ local SHADOW = noctalia.getConfig("calendar_shadow") == true
 local monthOffset = 0
 
 local function label(props)
-    props.shadow = SHADOW
-    return ui.label(props)
+    return ui.label(util.withShadow(props, SHADOW))
 end
 
 local function shownMonth()

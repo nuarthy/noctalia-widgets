@@ -1,11 +1,11 @@
 [[plugin]]
 id           = "nuarthy/noctalia-widgets"
 name         = "Desktop Widgets"
-version      = "1.0.0"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "layout-grid"
 description  = "Desktop widgets ported from dms-widgets: clock, weather, system, media, world clock, calendar and user card."
-plugin_api   = 51
+plugin_api   = 43
 tags         = ["desktop", "clock", "time", "media", "system"]
 dependencies = []

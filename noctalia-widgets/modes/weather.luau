@@ -18,8 +18,7 @@ local WIDTH = util.clamp(tonumber(noctalia.getConfig("weather_width")) or 280, 2
 local data = noctalia.state.get("nw.weather")
 
 local function label(props)
-    props.shadow = SHADOW
-    return ui.label(props)
+    return ui.label(util.withShadow(props, SHADOW))
 end
 
 local function refresh()

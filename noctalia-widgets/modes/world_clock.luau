@@ -55,8 +55,7 @@ local function formatHasSeconds()
 end
 
 local function label(props)
-    props.shadow = SHADOW
-    return ui.label(props)
+    return ui.label(util.withShadow(props, SHADOW))
 end
 
 local function localView()
