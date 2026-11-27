@@ -115,9 +115,11 @@ local function runTool(tool, input, output, done)
     else
         argv = { tool, input, output }
     end
+    -- Conversion uses the same command timeout as any callback runAsync call.
+    -- Give large images the maximum Noctalia allows instead of the 5s default.
     noctalia.runAsync(argv, function(result)
         done(result.exitCode == 0 and noctalia.fileExists(output))
-    end)
+    end, 60000)
 end
 
 local function tryTools(input, output, done)
@@ -198,6 +200,8 @@ local function onChooseImage()
         render()
         return
     end
+    -- runAsync() kills a callback process after 5s by default. A file picker can
+    -- easily stay open longer, so keep it alive for the 60s maximum.
     noctalia.runAsync(argv, function(result)
         if result.exitCode ~= 0 then
             return
@@ -209,7 +213,7 @@ local function onChooseImage()
         currentInput = path
         status = "idle"
         convertCurrent()
-    end)
+    end, 60000)
 end
 
 local function onPrevFormat()
