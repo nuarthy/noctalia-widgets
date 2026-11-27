@@ -1,7 +1,7 @@
-# Separate Noctalia desktop widget: World Clock.
+# Separate Noctalia desktop widget: Card World Clock.
 id = "nuarthy/world-clock"
-name = "World Clock"
-version = "1.0.0"
+name = "Card World Clock"
+version = "1.0.1"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

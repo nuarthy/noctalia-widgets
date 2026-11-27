@@ -1,7 +1,7 @@
-# Separate Noctalia desktop widget: RAM.
+# Separate Noctalia desktop widget: Card RAM.
 id = "nuarthy/ram"
-name = "RAM"
-version = "1.0.0"
+name = "Card RAM"
+version = "1.0.1"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

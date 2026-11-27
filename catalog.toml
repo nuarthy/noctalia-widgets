@@ -1,7 +1,7 @@
 [[plugin]]
 id           = "nuarthy/clock"
-name         = "Clock"
-version      = "1.0.0"
+name         = "Card Clock"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "clock"
@@ -12,8 +12,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/weather"
-name         = "Weather"
-version      = "1.0.0"
+name         = "Card Weather"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "cloud-sun"
@@ -24,8 +24,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/cpu"
-name         = "CPU"
-version      = "1.0.0"
+name         = "Card CPU"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "cpu"
@@ -36,8 +36,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/ram"
-name         = "RAM"
-version      = "1.0.0"
+name         = "Card RAM"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "memory-stick"
@@ -48,8 +48,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/battery"
-name         = "Battery"
-version      = "1.0.0"
+name         = "Card Battery"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "battery"
@@ -60,8 +60,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/media"
-name         = "Media"
-version      = "1.0.0"
+name         = "Card Media"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "music"
@@ -72,8 +72,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/world-clock"
-name         = "World Clock"
-version      = "1.0.0"
+name         = "Card World Clock"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "globe"
@@ -84,8 +84,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/calendar"
-name         = "Calendar"
-version      = "1.0.0"
+name         = "Card Calendar"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "calendar"
@@ -96,8 +96,8 @@ dependencies = []
 
 [[plugin]]
 id           = "nuarthy/user-card"
-name         = "User Card"
-version      = "1.0.0"
+name         = "Card User Card"
+version      = "1.0.1"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "user"

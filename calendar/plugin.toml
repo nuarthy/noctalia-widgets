@@ -1,7 +1,7 @@
-# Separate Noctalia desktop widget: Calendar.
+# Separate Noctalia desktop widget: Card Calendar.
 id = "nuarthy/calendar"
-name = "Calendar"
-version = "1.0.0"
+name = "Card Calendar"
+version = "1.0.1"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

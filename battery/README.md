@@ -1,4 +1,4 @@
-# Battery
+# Card Battery
 
 Battery percentage, state and remaining time.
 

@@ -1,7 +1,7 @@
-# Separate Noctalia desktop widget: Weather.
+# Separate Noctalia desktop widget: Card Weather.
 id = "nuarthy/weather"
-name = "Weather"
-version = "1.0.0"
+name = "Card Weather"
+version = "1.0.1"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

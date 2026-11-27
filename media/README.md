@@ -1,4 +1,4 @@
-# Media
+# Card Media
 
 MPRIS artwork, track details, progress and transport controls.
 

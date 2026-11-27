@@ -1,4 +1,4 @@
-# Clock
+# Card Clock
 
 Digital, stacked and compact clock with date, seconds and timezone.
 

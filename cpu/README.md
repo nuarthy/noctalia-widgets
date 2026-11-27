@@ -1,4 +1,4 @@
-# CPU
+# Card CPU
 
 CPU usage with an optional bar and detail line.
 

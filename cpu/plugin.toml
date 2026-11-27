@@ -1,7 +1,7 @@
-# Separate Noctalia desktop widget: CPU.
+# Separate Noctalia desktop widget: Card CPU.
 id = "nuarthy/cpu"
-name = "CPU"
-version = "1.0.0"
+name = "Card CPU"
+version = "1.0.1"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

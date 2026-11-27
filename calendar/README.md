@@ -1,4 +1,4 @@
-# Calendar
+# Card Calendar
 
 Six-row month grid with today highlighted.
 

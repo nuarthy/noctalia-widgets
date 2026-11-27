@@ -1,4 +1,4 @@
-# World Clock
+# Card World Clock
 
 Local time plus configurable IANA zones.
 

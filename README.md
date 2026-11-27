@@ -6,15 +6,15 @@ own plugin, so each name appears separately in the desktop-widget type picker.
 
 | Widget | Plugin ID | What it shows |
 | --- | --- | --- |
-| Clock | `nuarthy/clock` | Digital, stacked or compact clock with date, seconds and timezone |
-| Weather | `nuarthy/weather` | Current conditions and an Open-Meteo forecast |
-| CPU | `nuarthy/cpu` | CPU usage with an optional bar and detail line |
-| RAM | `nuarthy/ram` | RAM usage with an optional bar and detail line |
-| Battery | `nuarthy/battery` | Battery percentage, state and remaining time |
-| Media | `nuarthy/media` | MPRIS artwork, track details, progress and controls |
-| World Clock | `nuarthy/world-clock` | Local time plus configurable IANA zones |
-| Calendar | `nuarthy/calendar` | Six-row month grid with today highlighted |
-| User Card | `nuarthy/user-card` | Avatar, name, uptime, weather and session actions |
+| Card Clock | `nuarthy/clock` | Digital, stacked or compact clock with date, seconds and timezone |
+| Card Weather | `nuarthy/weather` | Current conditions and an Open-Meteo forecast |
+| Card CPU | `nuarthy/cpu` | CPU usage with an optional bar and detail line |
+| Card RAM | `nuarthy/ram` | RAM usage with an optional bar and detail line |
+| Card Battery | `nuarthy/battery` | Battery percentage, state and remaining time |
+| Card Media | `nuarthy/media` | MPRIS artwork, track details, progress and controls |
+| Card World Clock | `nuarthy/world-clock` | Local time plus configurable IANA zones |
+| Card Calendar | `nuarthy/calendar` | Six-row month grid with today highlighted |
+| Card User Card | `nuarthy/user-card` | Avatar, name, uptime, weather and session actions |
 
 Noctalia versions before 5.5 label every desktop widget from one plugin with
 the plugin's manifest name. Separate manifests are therefore required for
@@ -81,12 +81,12 @@ noctalia msg plugins enable nuarthy/user-card
 ```
 
 Add each card from the desktop-widget editor. Every plugin appears under its
-own name: **Clock**, **Weather**, **CPU**, and so on.
+own name: **Card Clock**, **Card Weather**, **Card CPU**, and so on.
 
 ### Replacing the old single plugin
 
-Version 1.0.1 was one `nuarthy/noctalia-widgets` entry. Remove it before using
-the split plugins:
+Earlier releases shipped one `nuarthy/noctalia-widgets` entry. Remove it before
+using the split plugins:
 
 ```sh
 noctalia msg plugins disable nuarthy/noctalia-widgets

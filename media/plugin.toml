@@ -1,7 +1,7 @@
-# Separate Noctalia desktop widget: Media.
+# Separate Noctalia desktop widget: Card Media.
 id = "nuarthy/media"
-name = "Media"
-version = "1.0.0"
+name = "Card Media"
+version = "1.0.1"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"

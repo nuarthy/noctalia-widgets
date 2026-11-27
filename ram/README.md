@@ -1,4 +1,4 @@
-# RAM
+# Card RAM
 
 RAM usage with an optional bar and detail line.
 

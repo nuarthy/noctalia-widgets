@@ -1,4 +1,4 @@
-# Weather
+# Card Weather
 
 Current conditions and an Open-Meteo forecast.
 
