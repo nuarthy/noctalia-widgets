@@ -8,9 +8,21 @@ function update()
     end
 end
 
-function onConvert()
-    if impl.onConvert then
-        impl.onConvert()
+function onChooseImage()
+    if impl.onChooseImage then
+        impl.onChooseImage()
+    end
+end
+
+function onPrevFormat()
+    if impl.onPrevFormat then
+        impl.onPrevFormat()
+    end
+end
+
+function onNextFormat()
+    if impl.onNextFormat then
+        impl.onNextFormat()
     end
 end
 

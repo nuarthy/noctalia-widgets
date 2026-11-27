@@ -264,27 +264,13 @@
       "label": "Width",
       "description": "Content width in logical pixels."
     },
-    "converter_input": {
-      "label": "Input image",
-      "description": "Image file to convert. Choose it here because desktop widgets cannot receive file drops."
-    },
-    "converter_format": {
-      "label": "Output format",
-      "description": "Target image format.",
-      "options": {
-        "webp": "WebP",
-        "png": "PNG",
-        "jpg": "JPG",
-        "avif": "AVIF"
-      }
-    },
-    "converter_show_preview": {
-      "label": "Show preview",
-      "description": "Show a thumbnail of the input image."
-    },
     "converter_width": {
       "label": "Width",
       "description": "Content width in logical pixels."
+    },
+    "converter_fallback_dir": {
+      "label": "Fallback folder",
+      "description": "Directory used when the input folder cannot be written."
     }
   },
   "weather": {
@@ -344,13 +330,14 @@
     "minutes": "{count}m"
   },
   "converter": {
-    "title": "Image Converter",
-    "no_input": "Choose an image in the widget settings.",
-    "ready": "Ready to convert.",
+    "choose_title": "Choose an image",
+    "choose": "Click to choose an image.",
+    "selected": "Selected: {name}",
     "converting": "Converting...",
     "saved": "Saved {name}",
+    "saved_fallback": "Saved in the fallback folder: {name}",
     "failed": "Conversion failed. Install ImageMagick or FFmpeg.",
-    "convert": "Convert",
+    "no_picker": "Install zenity, kdialog, or yad to choose an image.",
     "format": "Format"
   }
 }

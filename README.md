@@ -15,7 +15,7 @@ own plugin, so each name appears separately in the desktop-widget type picker.
 | Card World Clock | `nuarthy/world-clock` | Local time plus configurable IANA zones |
 | Card Calendar | `nuarthy/calendar` | Six-row month grid with today highlighted |
 | Card User Card | `nuarthy/user-card` | Avatar, name, uptime, weather and session actions |
-| Card Image Converter | `nuarthy/image-converter` | Convert a selected image to WebP, PNG, JPG or AVIF |
+| Card Image Converter | `nuarthy/image-converter` | Click to choose an image; convert to WebP, PNG, JPG or AVIF |
 
 Noctalia versions before 5.5 label every desktop widget from one plugin with
 the plugin's manifest name. Separate manifests are therefore required for
@@ -28,6 +28,8 @@ separate picker rows.
   native `noctalia.mediaPlayer()` API.
 - `[system.monitor]` enabled for the CPU and RAM widgets.
 - An MPRIS player for the Media widget.
+- `zenity`, `kdialog`, or `yad` for the Image Converter file picker.
+- ImageMagick (`magick` or `convert`) or FFmpeg for Image Converter.
 - Network access for Weather and User Card. Open-Meteo needs no API key.
 - Text shadow requires Noctalia 5.5 or newer.
 
@@ -106,9 +108,10 @@ cards:
   "Phase 2" placeholders.
 - `board`, `presets` and `presets-button` manage DMS layouts. Noctalia's
   desktop editor owns layout, so these have no equivalent.
-- The original `converter` depends on external file drops. **Card Image
-  Converter** uses an image setting and a Convert button instead; Noctalia
-  desktop widgets do not expose OS drag-and-drop.
+- Noctalia does not expose OS file drops to plugin desktop widgets. **Card
+  Image Converter** opens a native file picker when clicked; the left and right
+  arrows change the target format. The result goes next to the input, then to
+  `~/Pictures/Converted` if that directory is not writable.
 
 The ten cards above are the working, portable set. CPU, RAM and battery are
 separate plugins instead of one mode-switched card.

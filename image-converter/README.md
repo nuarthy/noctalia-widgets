@@ -1,10 +1,11 @@
 # Card Image Converter
 
-Convert a selected image to WebP, PNG, JPG or AVIF with ImageMagick or FFmpeg.
+Click the drop-style area to choose an image, then it converts immediately to
+WebP, PNG, JPG or AVIF. The left and right arrows change the format.
 
-Noctalia desktop widgets cannot receive OS file drops. Set **Input image** in
-the widget settings, choose **Output format**, then press **Convert**. The
-result is written next to the input file.
+Noctalia does not expose OS file drops to plugin desktop widgets, so the area
+opens a native file picker instead. The result is saved next to the input; if
+that folder is not writable, it goes to **~/Pictures/Converted**.
 
-Requires Noctalia 5.4 or newer and either ImageMagick (`magick` or `convert`) or
-FFmpeg.
+Requires Noctalia 5.4 or newer, a file picker (`zenity`, `kdialog` or `yad`), and
+ImageMagick (`magick` or `convert`) or FFmpeg.

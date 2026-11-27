@@ -109,11 +109,11 @@ dependencies = []
 [[plugin]]
 id           = "nuarthy/image-converter"
 name         = "Card Image Converter"
-version      = "1.0.1"
+version      = "1.0.2"
 author       = "nuarthy"
 license      = "MIT"
 icon         = "image"
-description  = "Convert a selected image to WebP, PNG, JPG or AVIF with ImageMagick or FFmpeg."
+description  = "Click to choose an image and convert it to WebP, PNG, JPG or AVIF with ImageMagick or FFmpeg."
 plugin_api   = 43
 tags         = ["desktop", "image", "converter"]
 dependencies = []

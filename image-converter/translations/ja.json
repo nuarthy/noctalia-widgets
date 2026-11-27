@@ -264,27 +264,13 @@
       "label": "幅",
       "description": "内容の幅（論理ピクセル）。"
     },
-    "converter_input": {
-      "label": "入力画像",
-      "description": "変換する画像ファイル。デスクトップウィジェットはファイルのドロップを受け取れないため、ここで選択します。"
-    },
-    "converter_format": {
-      "label": "出力形式",
-      "description": "変換先の画像形式。",
-      "options": {
-        "webp": "WebP",
-        "png": "PNG",
-        "jpg": "JPG",
-        "avif": "AVIF"
-      }
-    },
-    "converter_show_preview": {
-      "label": "プレビューを表示",
-      "description": "入力画像のサムネイルを表示します。"
-    },
     "converter_width": {
       "label": "幅",
       "description": "内容の幅（論理ピクセル）。"
+    },
+    "converter_fallback_dir": {
+      "label": "フォールバック先",
+      "description": "入力フォルダーに書き込めない場合に使用するディレクトリ。"
     }
   },
   "weather": {
@@ -344,13 +330,14 @@
     "minutes": "{count}分"
   },
   "converter": {
-    "title": "画像変換",
-    "no_input": "ウィジェット設定で画像を選択してください。",
-    "ready": "変換の準備ができました。",
+    "choose_title": "画像を選択",
+    "choose": "クリックして画像を選択してください。",
+    "selected": "選択中: {name}",
     "converting": "変換中...",
     "saved": "保存しました {name}",
+    "saved_fallback": "フォールバック先に保存しました: {name}",
     "failed": "変換に失敗しました。ImageMagick または FFmpeg をインストールしてください。",
-    "convert": "変換",
+    "no_picker": "画像を選択するには zenity、kdialog、または yad をインストールしてください。",
     "format": "形式"
   }
 }
