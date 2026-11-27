@@ -1,0 +1,53 @@
+# Separate Noctalia desktop widget: Calendar.
+id = "nuarthy/calendar"
+name = "Calendar"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "calendar"
+description = "Six-row month grid with today highlighted."
+tags = ["desktop", "calendar", "date"]
+dependencies = []
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "calendar_week_start"
+type = "select"
+label_key = "settings.calendar_week_start.label"
+description_key = "settings.calendar_week_start.description"
+default = "monday"
+options = [{ value = "monday", label_key = "settings.calendar_week_start.options.monday" }, { value = "sunday", label_key = "settings.calendar_week_start.options.sunday" }]
+
+[[desktop_widget.setting]]
+key = "calendar_width"
+type = "int"
+label_key = "settings.calendar_width.label"
+description_key = "settings.calendar_width.description"
+default = 270
+min = 180
+max = 520
+
+[[desktop_widget.setting]]
+key = "calendar_color"
+type = "color"
+label_key = "settings.calendar_color.label"
+description_key = "settings.calendar_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "calendar_text_color"
+type = "color"
+label_key = "settings.calendar_text_color.label"
+description_key = "settings.calendar_text_color.description"
+default = "on_surface"
+
+[[desktop_widget.setting]]
+key = "calendar_shadow"
+type = "bool"
+label_key = "settings.calendar_shadow.label"
+description_key = "settings.calendar_shadow.description"
+default = false

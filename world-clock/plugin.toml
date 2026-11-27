@@ -1,0 +1,102 @@
+# Separate Noctalia desktop widget: World Clock.
+id = "nuarthy/world-clock"
+name = "World Clock"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "globe"
+description = "Local time plus configurable IANA zones."
+tags = ["desktop", "clock", "timezone"]
+dependencies = []
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "world_zones"
+type = "string_list"
+label_key = "settings.world_zones.label"
+description_key = "settings.world_zones.description"
+default = ["Tokyo=Asia/Tokyo", "Shenyang=Asia/Shanghai", "New York=America/New_York", "London=Europe/London"]
+
+[[desktop_widget.setting]]
+key = "world_show_local"
+type = "bool"
+label_key = "settings.world_show_local.label"
+description_key = "settings.world_show_local.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "world_local_label"
+type = "string"
+label_key = "settings.world_local_label.label"
+description_key = "settings.world_local_label.description"
+default = ""
+
+[[desktop_widget.setting]]
+key = "world_show_date"
+type = "bool"
+label_key = "settings.world_show_date.label"
+description_key = "settings.world_show_date.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "world_date_format"
+type = "string"
+label_key = "settings.world_date_format.label"
+description_key = "settings.world_date_format.description"
+default = "%A, %B %-d"
+
+[[desktop_widget.setting]]
+key = "world_time_format"
+type = "string"
+label_key = "settings.world_time_format.label"
+description_key = "settings.world_time_format.description"
+default = ""
+
+[[desktop_widget.setting]]
+key = "world_show_gmt"
+type = "bool"
+label_key = "settings.world_show_gmt.label"
+description_key = "settings.world_show_gmt.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "world_columns"
+type = "select"
+label_key = "settings.world_columns.label"
+description_key = "settings.world_columns.description"
+default = "2"
+options = [{ value = "1", label_key = "settings.world_columns.options.1" }, { value = "2", label_key = "settings.world_columns.options.2" }]
+
+[[desktop_widget.setting]]
+key = "world_color"
+type = "color"
+label_key = "settings.world_color.label"
+description_key = "settings.world_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "world_secondary_color"
+type = "color"
+label_key = "settings.world_secondary_color.label"
+description_key = "settings.world_secondary_color.description"
+default = "on_surface_variant"
+
+[[desktop_widget.setting]]
+key = "world_shadow"
+type = "bool"
+label_key = "settings.world_shadow.label"
+description_key = "settings.world_shadow.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "world_width"
+type = "int"
+label_key = "settings.world_width.label"
+description_key = "settings.world_width.description"
+default = 300
+min = 200
+max = 800

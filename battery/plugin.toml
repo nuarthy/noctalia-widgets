@@ -1,0 +1,69 @@
+# Separate Noctalia desktop widget: Battery.
+id = "nuarthy/battery"
+name = "Battery"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "battery"
+description = "Battery percentage, state and remaining time."
+tags = ["desktop", "system", "battery"]
+dependencies = []
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "system_metric"
+type = "select"
+label_key = "settings.system_metric.label"
+description_key = "settings.system_metric.description"
+default = "battery"
+options = [{ value = "battery", label_key = "settings.system_metric.options.battery" }]
+
+[[desktop_widget.setting]]
+key = "system_color"
+type = "color"
+label_key = "settings.system_color.label"
+description_key = "settings.system_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "system_show_detail"
+type = "bool"
+label_key = "settings.system_show_detail.label"
+description_key = "settings.system_show_detail.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "system_show_bar"
+type = "bool"
+label_key = "settings.system_show_bar.label"
+description_key = "settings.system_show_bar.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "system_warn_threshold"
+type = "int"
+label_key = "settings.system_warn_threshold.label"
+description_key = "settings.system_warn_threshold.description"
+default = 90
+min = 50
+max = 100
+
+[[desktop_widget.setting]]
+key = "system_shadow"
+type = "bool"
+label_key = "settings.system_shadow.label"
+description_key = "settings.system_shadow.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "system_width"
+type = "int"
+label_key = "settings.system_width.label"
+description_key = "settings.system_width.description"
+default = 0
+min = 0
+max = 900

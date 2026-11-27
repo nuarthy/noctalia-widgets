@@ -1,0 +1,88 @@
+# Separate Noctalia desktop widget: Clock.
+id = "nuarthy/clock"
+name = "Clock"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "clock"
+description = "Digital, stacked and compact clock with date, seconds and timezone."
+tags = ["desktop", "clock", "time"]
+dependencies = []
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "clock_style"
+type = "select"
+label_key = "settings.clock_style.label"
+description_key = "settings.clock_style.description"
+default = "digital"
+options = [{ value = "digital", label_key = "settings.clock_style.options.digital" }, { value = "stacked", label_key = "settings.clock_style.options.stacked" }, { value = "compact", label_key = "settings.clock_style.options.compact" }]
+
+[[desktop_widget.setting]]
+key = "clock_show_seconds"
+type = "bool"
+label_key = "settings.clock_show_seconds.label"
+description_key = "settings.clock_show_seconds.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "clock_show_date"
+type = "bool"
+label_key = "settings.clock_show_date.label"
+description_key = "settings.clock_show_date.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "clock_date_format"
+type = "string"
+label_key = "settings.clock_date_format.label"
+description_key = "settings.clock_date_format.description"
+default = "%a, %b %-d"
+
+[[desktop_widget.setting]]
+key = "clock_time_format"
+type = "string"
+label_key = "settings.clock_time_format.label"
+description_key = "settings.clock_time_format.description"
+default = ""
+
+[[desktop_widget.setting]]
+key = "clock_timezone"
+type = "string"
+label_key = "settings.clock_timezone.label"
+description_key = "settings.clock_timezone.description"
+default = ""
+
+[[desktop_widget.setting]]
+key = "clock_color"
+type = "color"
+label_key = "settings.clock_color.label"
+description_key = "settings.clock_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "clock_date_color"
+type = "color"
+label_key = "settings.clock_date_color.label"
+description_key = "settings.clock_date_color.description"
+default = "on_surface_variant"
+
+[[desktop_widget.setting]]
+key = "clock_shadow"
+type = "bool"
+label_key = "settings.clock_shadow.label"
+description_key = "settings.clock_shadow.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "clock_width"
+type = "int"
+label_key = "settings.clock_width.label"
+description_key = "settings.clock_width.description"
+default = 0
+min = 0
+max = 900

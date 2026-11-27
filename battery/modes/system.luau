@@ -1,11 +1,7 @@
 --!nonstrict
--- System tile: CPU, RAM, battery, or all three.
---
--- The DMS collection shipped three separate widgets. Noctalia desktop widgets are
--- configured per instance, so one entry with a "metric" setting covers all three
--- and adds an "all" layout. CPU and RAM come from noctalia.systemStats(); the
--- battery comes from /sys/class/power_supply because the plugin API has no UPower
--- reader.
+-- Shared CPU/RAM/battery card. Each plugin fixes its metric in the manifest:
+-- CPU and RAM come from noctalia.systemStats(); battery comes from
+-- /sys/class/power_supply because the plugin API has no UPower reader.
 
 local util = require("../lib/util.luau")
 

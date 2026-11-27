@@ -1,0 +1,96 @@
+# Separate Noctalia desktop widget: Weather.
+id = "nuarthy/weather"
+name = "Weather"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "cloud-sun"
+description = "Current conditions and an Open-Meteo forecast."
+tags = ["desktop", "weather", "forecast"]
+dependencies = []
+
+[[setting]]
+key = "weather_location"
+type = "string"
+label_key = "settings.weather_location.label"
+description_key = "settings.weather_location.description"
+default = ""
+
+[[setting]]
+key = "weather_units"
+type = "select"
+label_key = "settings.weather_units.label"
+description_key = "settings.weather_units.description"
+default = "metric"
+options = [{ value = "metric", label_key = "settings.weather_units.options.metric" }, { value = "imperial", label_key = "settings.weather_units.options.imperial" }]
+
+[[setting]]
+key = "weather_refresh"
+type = "int"
+label_key = "settings.weather_refresh.label"
+description_key = "settings.weather_refresh.description"
+default = 15
+min = 5
+max = 120
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "weather_show_forecast"
+type = "bool"
+label_key = "settings.weather_show_forecast.label"
+description_key = "settings.weather_show_forecast.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "weather_forecast_days"
+type = "int"
+label_key = "settings.weather_forecast_days.label"
+description_key = "settings.weather_forecast_days.description"
+default = 3
+min = 1
+max = 6
+
+[[desktop_widget.setting]]
+key = "weather_show_details"
+type = "bool"
+label_key = "settings.weather_show_details.label"
+description_key = "settings.weather_show_details.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "weather_show_feels"
+type = "bool"
+label_key = "settings.weather_show_feels.label"
+description_key = "settings.weather_show_feels.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "weather_color"
+type = "color"
+label_key = "settings.weather_color.label"
+description_key = "settings.weather_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "weather_shadow"
+type = "bool"
+label_key = "settings.weather_shadow.label"
+description_key = "settings.weather_shadow.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "weather_width"
+type = "int"
+label_key = "settings.weather_width.label"
+description_key = "settings.weather_width.description"
+default = 280
+min = 240
+max = 640
+
+[[service]]
+id = "weather_service"
+entry = "weather_service.luau"

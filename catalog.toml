@@ -1,11 +1,107 @@
 [[plugin]]
-id           = "nuarthy/noctalia-widgets"
-name         = "Desktop Widgets"
-version      = "1.0.1"
+id           = "nuarthy/clock"
+name         = "Clock"
+version      = "1.0.0"
 author       = "nuarthy"
 license      = "MIT"
-icon         = "layout-grid"
-description  = "Desktop widgets ported from dms-widgets: clock, weather, system, media, world clock, calendar and user card."
+icon         = "clock"
+description  = "Digital, stacked and compact clock with date, seconds and timezone."
 plugin_api   = 43
-tags         = ["desktop", "clock", "time", "media", "system"]
+tags         = ["desktop", "clock", "time"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/weather"
+name         = "Weather"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "cloud-sun"
+description  = "Current conditions and an Open-Meteo forecast."
+plugin_api   = 43
+tags         = ["desktop", "weather", "forecast"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/cpu"
+name         = "CPU"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "cpu"
+description  = "CPU usage with an optional bar and detail line."
+plugin_api   = 43
+tags         = ["desktop", "system", "cpu"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/ram"
+name         = "RAM"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "memory-stick"
+description  = "RAM usage with an optional bar and detail line."
+plugin_api   = 43
+tags         = ["desktop", "system", "memory"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/battery"
+name         = "Battery"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "battery"
+description  = "Battery percentage, state and remaining time."
+plugin_api   = 43
+tags         = ["desktop", "system", "battery"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/media"
+name         = "Media"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "music"
+description  = "MPRIS artwork, track details, progress and transport controls."
+plugin_api   = 43
+tags         = ["desktop", "media", "mpris"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/world-clock"
+name         = "World Clock"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "globe"
+description  = "Local time plus configurable IANA zones."
+plugin_api   = 43
+tags         = ["desktop", "clock", "timezone"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/calendar"
+name         = "Calendar"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "calendar"
+description  = "Six-row month grid with today highlighted."
+plugin_api   = 43
+tags         = ["desktop", "calendar", "date"]
+dependencies = []
+
+[[plugin]]
+id           = "nuarthy/user-card"
+name         = "User Card"
+version      = "1.0.0"
+author       = "nuarthy"
+license      = "MIT"
+icon         = "user"
+description  = "Avatar, name, uptime, weather and session actions."
+plugin_api   = 43
+tags         = ["desktop", "user", "session"]
 dependencies = []

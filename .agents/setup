@@ -53,15 +53,15 @@ export PATH="$BIN_DIR:$PATH"
 
 step "compile widget scripts"
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
-for file in $(find "$repo_root/noctalia-widgets" -name '*.luau' | sort); do
+while IFS= read -r file; do
     luau-compile --binary "$file" >/dev/null
     echo "ok $file"
-done
+done < <(find "$repo_root" -path "$repo_root/.git" -prune -o -name '*.luau' -print | sort)
 
 step "static-only note"
 cat <<'NOTE'
 Noctalia, niri and a Wayland session are not available in an orb, so the widgets
 cannot be rendered or screenshotted here. Compile changes with luau-compile; run
-`noctalia plugins lint noctalia-widgets` on the target machine for the host-side
-settings check.
+`noctalia plugins lint .` in the repository root on the target machine for the
+host-side settings check.
 NOTE

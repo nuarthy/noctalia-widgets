@@ -1,9 +1,9 @@
 --!nonstrict
--- Weather service for the weather widget and the user card.
+-- Weather service for this plugin's weather consumer.
 --
--- Desktop widgets are separate Luau VMs, so they cannot share Lua memory. This
--- headless entry owns the network work and publishes one snapshot on
--- "nw.weather"; both widgets watch it. A manual refresh is requested by bumping
+-- The widget and service are separate Luau VMs, so they cannot share Lua memory.
+-- This headless entry owns the network work and publishes one snapshot on
+-- "nw.weather"; the widget watches it. A manual refresh is requested by bumping
 -- "nw.weather.refresh".
 --
 -- The last successful snapshot is cached in the plugin data directory, so a

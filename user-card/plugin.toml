@@ -1,0 +1,102 @@
+# Separate Noctalia desktop widget: User Card.
+id = "nuarthy/user-card"
+name = "User Card"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "user"
+description = "Avatar, name, uptime, weather and session actions."
+tags = ["desktop", "user", "session"]
+dependencies = []
+
+[[setting]]
+key = "weather_location"
+type = "string"
+label_key = "settings.weather_location.label"
+description_key = "settings.weather_location.description"
+default = ""
+
+[[setting]]
+key = "weather_units"
+type = "select"
+label_key = "settings.weather_units.label"
+description_key = "settings.weather_units.description"
+default = "metric"
+options = [{ value = "metric", label_key = "settings.weather_units.options.metric" }, { value = "imperial", label_key = "settings.weather_units.options.imperial" }]
+
+[[setting]]
+key = "weather_refresh"
+type = "int"
+label_key = "settings.weather_refresh.label"
+description_key = "settings.weather_refresh.description"
+default = 15
+min = 5
+max = 120
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "usercard_name"
+type = "string"
+label_key = "settings.usercard_name.label"
+description_key = "settings.usercard_name.description"
+default = ""
+
+[[desktop_widget.setting]]
+key = "usercard_avatar"
+type = "file"
+label_key = "settings.usercard_avatar.label"
+description_key = "settings.usercard_avatar.description"
+default = ""
+extensions = [".png", ".jpg", ".jpeg", ".webp", ".gif"]
+
+[[desktop_widget.setting]]
+key = "usercard_show_weather"
+type = "bool"
+label_key = "settings.usercard_show_weather.label"
+description_key = "settings.usercard_show_weather.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "usercard_show_uptime"
+type = "bool"
+label_key = "settings.usercard_show_uptime.label"
+description_key = "settings.usercard_show_uptime.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "usercard_show_actions"
+type = "bool"
+label_key = "settings.usercard_show_actions.label"
+description_key = "settings.usercard_show_actions.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "usercard_color"
+type = "color"
+label_key = "settings.usercard_color.label"
+description_key = "settings.usercard_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "usercard_shadow"
+type = "bool"
+label_key = "settings.usercard_shadow.label"
+description_key = "settings.usercard_shadow.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "usercard_width"
+type = "int"
+label_key = "settings.usercard_width.label"
+description_key = "settings.usercard_width.description"
+default = 330
+min = 240
+max = 800
+
+[[service]]
+id = "weather_service"
+entry = "weather_service.luau"

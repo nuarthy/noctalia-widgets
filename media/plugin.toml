@@ -1,0 +1,52 @@
+# Separate Noctalia desktop widget: Media.
+id = "nuarthy/media"
+name = "Media"
+version = "1.0.0"
+plugin_api = 43
+author = "nuarthy"
+license = "MIT"
+icon = "music"
+description = "MPRIS artwork, track details, progress and transport controls."
+tags = ["desktop", "media", "mpris"]
+dependencies = []
+
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+[[desktop_widget.setting]]
+key = "media_show_art"
+type = "bool"
+label_key = "settings.media_show_art.label"
+description_key = "settings.media_show_art.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "media_show_progress"
+type = "bool"
+label_key = "settings.media_show_progress.label"
+description_key = "settings.media_show_progress.description"
+default = true
+
+[[desktop_widget.setting]]
+key = "media_color"
+type = "color"
+label_key = "settings.media_color.label"
+description_key = "settings.media_color.description"
+default = "primary"
+
+[[desktop_widget.setting]]
+key = "media_shadow"
+type = "bool"
+label_key = "settings.media_shadow.label"
+description_key = "settings.media_shadow.description"
+default = false
+
+[[desktop_widget.setting]]
+key = "media_width"
+type = "int"
+label_key = "settings.media_width.label"
+description_key = "settings.media_width.description"
+default = 340
+min = 240
+max = 900
