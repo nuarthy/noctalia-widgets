@@ -1,0 +1,324 @@
+{
+  "settings": {
+    "mode": {
+      "label": "モード",
+      "description": "このインスタンスが表示するウィジェット。設定はインスタンスごとに保存されます。",
+      "options": {
+        "clock": "時計",
+        "weather": "天気",
+        "system": "システム",
+        "media": "メディア",
+        "world_clock": "世界時計",
+        "calendar": "カレンダー",
+        "user_card": "ユーザーカード"
+      }
+    },
+    "weather_location": {
+      "label": "天気の地点",
+      "description": "都市名、または緯度,経度。空欄ならシェルの位置情報、なければジャカルタを使います。"
+    },
+    "weather_units": {
+      "label": "単位",
+      "description": "天気ウィジェットとユーザーカードで使う気温と風速の単位。",
+      "options": {
+        "metric": "メートル法 (°C, km/h)",
+        "imperial": "ヤード・ポンド法 (°F, mph)"
+      }
+    },
+    "weather_refresh": {
+      "label": "更新間隔",
+      "description": "Open-Meteo へ問い合わせる間隔（分）。"
+    },
+    "clock_style": {
+      "label": "スタイル",
+      "description": "デジタルは1行、積み上げは時と分を分け、コンパクトは日付を省きます。",
+      "options": {
+        "digital": "デジタル",
+        "stacked": "積み上げ",
+        "compact": "コンパクト"
+      }
+    },
+    "clock_show_seconds": {
+      "label": "秒を表示",
+      "description": "秒を追加し、1秒ごとに更新します。"
+    },
+    "clock_show_date": {
+      "label": "日付を表示",
+      "description": "日付の行を表示します。"
+    },
+    "clock_date_format": {
+      "label": "日付の書式",
+      "description": "strftime 形式。例: %a, %b %-d"
+    },
+    "clock_time_format": {
+      "label": "時刻の書式",
+      "description": "空欄ならシェルの時刻書式に従います。"
+    },
+    "clock_timezone": {
+      "label": "タイムゾーン",
+      "description": "Asia/Tokyo などの IANA 名。空欄ならローカル時刻。"
+    },
+    "clock_color": {
+      "label": "時刻の色",
+      "description": "パレットの役割名または16進カラー。"
+    },
+    "clock_date_color": {
+      "label": "日付の色",
+      "description": "パレットの役割名または16進カラー。"
+    },
+    "clock_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "clock_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。0 はスタイルごとの既定値。"
+    },
+    "weather_show_forecast": {
+      "label": "予報を表示",
+      "description": "これからの日を並べて表示します。"
+    },
+    "weather_forecast_days": {
+      "label": "予報の日数",
+      "description": "予報に並べる日数。"
+    },
+    "weather_show_details": {
+      "label": "詳細を表示",
+      "description": "湿度、風、降水確率を表示します。"
+    },
+    "weather_show_feels": {
+      "label": "体感温度を表示",
+      "description": "地点の横に体感温度を表示します。"
+    },
+    "weather_color": {
+      "label": "アクセント色",
+      "description": "気温と天気アイコンの色。パレットの役割名または16進カラー。"
+    },
+    "weather_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "weather_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。"
+    },
+    "system_metric": {
+      "label": "項目",
+      "description": "表示する資源。すべてを選ぶと CPU・メモリ・バッテリーを並べます。",
+      "options": {
+        "cpu": "CPU",
+        "ram": "メモリ",
+        "battery": "バッテリー",
+        "all": "すべて"
+      }
+    },
+    "system_color": {
+      "label": "アクセント色",
+      "description": "パレットの役割名または16進カラー。警告時はエラー色と第三色に変わります。"
+    },
+    "system_show_detail": {
+      "label": "詳細を表示",
+      "description": "温度と周波数、メモリの使用量、バッテリーの状態を表示します。"
+    },
+    "system_show_bar": {
+      "label": "進捗バーを表示",
+      "description": "値の下にバーを描きます。"
+    },
+    "system_warn_threshold": {
+      "label": "警告しきい値",
+      "description": "CPU とメモリがこの割合以上になるとエラー色になります。"
+    },
+    "system_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "system_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。0 は項目ごとの既定値。"
+    },
+    "media_show_art": {
+      "label": "ジャケットを表示",
+      "description": "再生中のアルバムアートを表示します。"
+    },
+    "media_show_progress": {
+      "label": "再生位置を表示",
+      "description": "再生位置のバーを描きます。"
+    },
+    "media_color": {
+      "label": "アクセント色",
+      "description": "再生バーと再生ボタンの色。パレットの役割名または16進カラー。"
+    },
+    "media_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "media_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。"
+    },
+    "world_zones": {
+      "label": "都市",
+      "description": "1行につき ラベル=IANA/ゾーン、または IANA ゾーンだけ。例: 東京=Asia/Tokyo"
+    },
+    "world_show_local": {
+      "label": "ローカル時刻を表示",
+      "description": "都市一覧の上に大きなローカル時計を表示します。"
+    },
+    "world_local_label": {
+      "label": "ローカルのラベル",
+      "description": "ローカル時刻の上に出す名前。空欄ならシェルの位置情報、なければ「ローカル」。"
+    },
+    "world_show_date": {
+      "label": "日付を表示",
+      "description": "ローカル時刻の下に日付を表示します。"
+    },
+    "world_date_format": {
+      "label": "日付の書式",
+      "description": "strftime 形式。例: %A, %B %-d"
+    },
+    "world_time_format": {
+      "label": "時刻の書式",
+      "description": "空欄ならシェルの時刻書式に従います。"
+    },
+    "world_show_gmt": {
+      "label": "GMT 差を表示",
+      "description": "各都市の現在の GMT 差（例: GMT+9）を表示します。"
+    },
+    "world_columns": {
+      "label": "列数",
+      "description": "都市を1列または2列で並べます。",
+      "options": {
+        "1": "1列",
+        "2": "2列"
+      }
+    },
+    "world_color": {
+      "label": "時刻の色",
+      "description": "時計の値の色。パレットの役割名または16進カラー。"
+    },
+    "world_secondary_color": {
+      "label": "ラベルの色",
+      "description": "ラベル、日付、GMT 差の色。パレットの役割名または16進カラー。"
+    },
+    "world_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "world_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。"
+    },
+    "calendar_week_start": {
+      "label": "週の始まり",
+      "description": "月表示の最初の列。",
+      "options": {
+        "monday": "月曜日",
+        "sunday": "日曜日"
+      }
+    },
+    "calendar_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。"
+    },
+    "calendar_color": {
+      "label": "アクセント色",
+      "description": "今日と月移動ボタンの色。パレットの役割名または16進カラー。"
+    },
+    "calendar_text_color": {
+      "label": "文字色",
+      "description": "日の数字の色。パレットの役割名または16進カラー。"
+    },
+    "calendar_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "usercard_name": {
+      "label": "表示名",
+      "description": "AccountsService から読んだ名前を上書きします。"
+    },
+    "usercard_avatar": {
+      "label": "アバター",
+      "description": "画像ファイル。空欄なら AccountsService のアイコン、~/.face、頭文字の順に使います。"
+    },
+    "usercard_show_weather": {
+      "label": "天気を表示",
+      "description": "現在の気温と天気を表示します。"
+    },
+    "usercard_show_uptime": {
+      "label": "稼働時間を表示",
+      "description": "システムの連続稼働時間を表示します。"
+    },
+    "usercard_show_actions": {
+      "label": "操作ボタンを表示",
+      "description": "ロック、設定、電源のボタンを表示します。"
+    },
+    "usercard_color": {
+      "label": "アクセント色",
+      "description": "名前とボタンの色。パレットの役割名または16進カラー。"
+    },
+    "usercard_shadow": {
+      "label": "文字の影",
+      "description": "壁紙の上でも読みやすいように文字へ影を付けます。"
+    },
+    "usercard_width": {
+      "label": "幅",
+      "description": "内容の幅（論理ピクセル）。"
+    }
+  },
+  "weather": {
+    "unavailable": "天気を取得できません",
+    "loading": "天気を読み込み中…",
+    "feels": "体感 {temp}",
+    "humidity": "湿度",
+    "wind": "風",
+    "precip": "降水",
+    "updated": "{age}に更新",
+    "refresh": "天気を更新",
+    "now": "たった今",
+    "minutes_ago": "{count}分前",
+    "hours_ago": "{count}時間前",
+    "condition": {
+      "clear": "晴れ",
+      "mainly_clear": "おおむね晴れ",
+      "partly": "晴れ時々曇り",
+      "overcast": "曇り",
+      "fog": "霧",
+      "drizzle": "霧雨",
+      "freezing": "凍雨",
+      "rain": "雨",
+      "snow": "雪",
+      "showers": "にわか雨",
+      "storm": "雷雨"
+    }
+  },
+  "media": {
+    "idle_title": "次の曲を待っています",
+    "idle_subtitle": "言葉にできない想いは、音楽が語る",
+    "unknown_title": "不明な曲",
+    "unknown_artist": "不明なアーティスト"
+  },
+  "system": {
+    "cpu": "CPU",
+    "ram": "メモリ",
+    "battery": "バッテリー",
+    "monitor_off": "システムモニターが無効です",
+    "monitor_off_hint": "設定 → システムモニター で有効にしてください。",
+    "no_battery": "バッテリーが見つかりません",
+    "charging": "充電中",
+    "discharging": "放電中",
+    "full": "満充電",
+    "not_charging": "充電停止中"
+  },
+  "world": {
+    "local": "ローカル",
+    "no_zones": "ウィジェット設定で都市を追加してください。"
+  },
+  "calendar": {
+    "today": "今日"
+  },
+  "usercard": {
+    "days": "{count}日",
+    "hours": "{count}時間",
+    "minutes": "{count}分"
+  }
+}

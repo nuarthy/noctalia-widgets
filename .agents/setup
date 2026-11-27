@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# Orb setup for the noctalia-widgets plugin.
+#
+# The repository is Luau entry scripts plus TOML manifests: no build step and no
+# runtime dependencies. The only tool a fresh orb lacks is the Luau CLI used to
+# compile the scripts. A real Noctalia session (and therefore the desktop-widget
+# renderer) is not available in an orb, so verification here is static.
+set -euo pipefail
+
+LUAU_VERSION="0.745"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia-widgets"
+VERSION_FILE="$STATE_DIR/luau.version"
+BIN_DIR="$HOME/.local/bin"
+
+step() { printf '\n==> %s\n' "$*"; }
+
+step "system packages"
+missing=()
+for package in curl unzip; do
+    command -v "$package" >/dev/null 2>&1 || missing+=("$package")
+done
+if [ ${#missing[@]} -gt 0 ]; then
+    echo "installing: ${missing[*]}"
+    if [ "$(id -u)" -eq 0 ]; then
+        apt-get update -qq && apt-get install -y --no-install-recommends "${missing[@]}"
+    else
+        sudo -n apt-get update -qq && sudo -n apt-get install -y --no-install-recommends "${missing[@]}"
+    fi
+else
+    echo "already installed: curl unzip"
+fi
+
+step "Luau $LUAU_VERSION"
+if command -v luau >/dev/null 2>&1 && [ "$(cat "$VERSION_FILE" 2>/dev/null || true)" = "$LUAU_VERSION" ]; then
+    echo "already installed: $(command -v luau)"
+else
+    download_dir="$(mktemp -d)"
+    trap 'rm -rf "$download_dir"' EXIT
+    curl -fsSL --retry 3 -o "$download_dir/luau.zip" \
+        "https://github.com/luau-lang/luau/releases/download/$LUAU_VERSION/luau-ubuntu.zip"
+    unzip -q -o "$download_dir/luau.zip" -d "$download_dir/bin"
+    mkdir -p "$BIN_DIR"
+    install -m 0755 "$download_dir/bin/luau" "$download_dir/bin/luau-analyze" \
+        "$download_dir/bin/luau-compile" "$BIN_DIR/"
+    mkdir -p "$STATE_DIR"
+    printf '%s\n' "$LUAU_VERSION" >"$VERSION_FILE"
+    echo "installed into $BIN_DIR"
+    trap - EXIT
+    rm -rf "$download_dir"
+fi
+
+export PATH="$BIN_DIR:$PATH"
+
+step "compile widget scripts"
+repo_root="$(cd "$(dirname "$0")/.." && pwd)"
+for file in $(find "$repo_root/noctalia-widgets" -name '*.luau' | sort); do
+    luau-compile --binary "$file" >/dev/null
+    echo "ok $file"
+done
+
+step "static-only note"
+cat <<'NOTE'
+Noctalia, niri and a Wayland session are not available in an orb, so the widgets
+cannot be rendered or screenshotted here. Compile changes with luau-compile; run
+`noctalia plugins lint noctalia-widgets` on the target machine for the host-side
+settings check.
+NOTE

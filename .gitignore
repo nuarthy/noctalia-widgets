@@ -1,0 +1,15 @@
+# Editor and OS noise
+*.swp
+*~
+.DS_Store
+
+# Luau language-server definitions are fetched, not vendored
+noctalia.d.luau
+
+# Per-user plugin state
+settings.json
+
+# Orb runtime state: portal registrations, service metadata and scratch files
+.amp/portals/
+.amp/services/
+.amp/in/

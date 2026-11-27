@@ -1,0 +1,527 @@
+# Desktop widgets ported from github.com/nuarthy/dms-widgets.
+#
+# One desktop-widget entry with a Mode setting, plus a shared weather service.
+# Noctalia labels plugin desktop widgets with the plugin name, so separate
+# entries would all read "Desktop Widgets" in the type picker; one mode-switched
+# entry keeps a single picker row and per-instance settings.
+#
+# plugin_api = 51 covers noctalia.mediaPlayer(), the declarative text shadow and
+# the current color roles (Noctalia 5.5.0 or newer).
+
+id = "nuarthy/noctalia-widgets"
+name = "Desktop Widgets"
+version = "1.0.0"
+plugin_api = 51
+author = "nuarthy"
+license = "MIT"
+icon = "layout-grid"
+description = "Desktop widgets ported from dms-widgets: clock, weather, system, media, world clock, calendar and user card."
+tags = ["desktop", "clock", "time", "media", "system"]
+dependencies = []
+
+# ── Shared weather source ────────────────────────────────────────────────────
+[[setting]]
+key = "weather_location"
+type = "string"
+label_key = "settings.weather_location.label"
+description_key = "settings.weather_location.description"
+default = ""
+
+[[setting]]
+key = "weather_units"
+type = "select"
+label_key = "settings.weather_units.label"
+description_key = "settings.weather_units.description"
+default = "metric"
+options = [{ value = "metric", label_key = "settings.weather_units.options.metric" }, { value = "imperial", label_key = "settings.weather_units.options.imperial" }]
+
+[[setting]]
+key = "weather_refresh"
+type = "int"
+label_key = "settings.weather_refresh.label"
+description_key = "settings.weather_refresh.description"
+default = 15
+min = 5
+max = 120
+
+# ── Desktop widget entry ─────────────────────────────────────────────────────
+[[desktop_widget]]
+id = "widget"
+entry = "widget.luau"
+
+  [[desktop_widget.setting]]
+  key = "mode"
+  type = "select"
+  label_key = "settings.mode.label"
+  description_key = "settings.mode.description"
+  default = "clock"
+  options = [{ value = "clock", label_key = "settings.mode.options.clock" }, { value = "weather", label_key = "settings.mode.options.weather" }, { value = "system", label_key = "settings.mode.options.system" }, { value = "media", label_key = "settings.mode.options.media" }, { value = "world_clock", label_key = "settings.mode.options.world_clock" }, { value = "calendar", label_key = "settings.mode.options.calendar" }, { value = "user_card", label_key = "settings.mode.options.user_card" }]
+
+# ── Clock ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "clock_style"
+  type = "select"
+  label_key = "settings.clock_style.label"
+  description_key = "settings.clock_style.description"
+  default = "digital"
+  options = [{ value = "digital", label_key = "settings.clock_style.options.digital" }, { value = "stacked", label_key = "settings.clock_style.options.stacked" }, { value = "compact", label_key = "settings.clock_style.options.compact" }]
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_show_seconds"
+  type = "bool"
+  label_key = "settings.clock_show_seconds.label"
+  description_key = "settings.clock_show_seconds.description"
+  default = false
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_show_date"
+  type = "bool"
+  label_key = "settings.clock_show_date.label"
+  description_key = "settings.clock_show_date.description"
+  default = true
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_date_format"
+  type = "string"
+  label_key = "settings.clock_date_format.label"
+  description_key = "settings.clock_date_format.description"
+  default = "%a, %b %-d"
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_time_format"
+  type = "string"
+  label_key = "settings.clock_time_format.label"
+  description_key = "settings.clock_time_format.description"
+  default = ""
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_timezone"
+  type = "string"
+  label_key = "settings.clock_timezone.label"
+  description_key = "settings.clock_timezone.description"
+  default = ""
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_color"
+  type = "color"
+  label_key = "settings.clock_color.label"
+  description_key = "settings.clock_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_date_color"
+  type = "color"
+  label_key = "settings.clock_date_color.label"
+  description_key = "settings.clock_date_color.description"
+  default = "on_surface_variant"
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_shadow"
+  type = "bool"
+  label_key = "settings.clock_shadow.label"
+  description_key = "settings.clock_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["clock"] }
+
+  [[desktop_widget.setting]]
+  key = "clock_width"
+  type = "int"
+  label_key = "settings.clock_width.label"
+  description_key = "settings.clock_width.description"
+  default = 0
+  min = 0
+  max = 900
+  visible_when = { key = "mode", values = ["clock"] }
+
+# ── Weather ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "weather_show_forecast"
+  type = "bool"
+  label_key = "settings.weather_show_forecast.label"
+  description_key = "settings.weather_show_forecast.description"
+  default = true
+  visible_when = { key = "mode", values = ["weather"] }
+
+  [[desktop_widget.setting]]
+  key = "weather_forecast_days"
+  type = "int"
+  label_key = "settings.weather_forecast_days.label"
+  description_key = "settings.weather_forecast_days.description"
+  default = 3
+  min = 1
+  max = 6
+  visible_when = { key = "mode", values = ["weather"] }
+
+  [[desktop_widget.setting]]
+  key = "weather_show_details"
+  type = "bool"
+  label_key = "settings.weather_show_details.label"
+  description_key = "settings.weather_show_details.description"
+  default = true
+  visible_when = { key = "mode", values = ["weather"] }
+
+  [[desktop_widget.setting]]
+  key = "weather_show_feels"
+  type = "bool"
+  label_key = "settings.weather_show_feels.label"
+  description_key = "settings.weather_show_feels.description"
+  default = true
+  visible_when = { key = "mode", values = ["weather"] }
+
+  [[desktop_widget.setting]]
+  key = "weather_color"
+  type = "color"
+  label_key = "settings.weather_color.label"
+  description_key = "settings.weather_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["weather"] }
+
+  [[desktop_widget.setting]]
+  key = "weather_shadow"
+  type = "bool"
+  label_key = "settings.weather_shadow.label"
+  description_key = "settings.weather_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["weather"] }
+
+  [[desktop_widget.setting]]
+  key = "weather_width"
+  type = "int"
+  label_key = "settings.weather_width.label"
+  description_key = "settings.weather_width.description"
+  default = 280
+  min = 240
+  max = 640
+  visible_when = { key = "mode", values = ["weather"] }
+
+# ── System ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "system_metric"
+  type = "select"
+  label_key = "settings.system_metric.label"
+  description_key = "settings.system_metric.description"
+  default = "cpu"
+  options = [{ value = "cpu", label_key = "settings.system_metric.options.cpu" }, { value = "ram", label_key = "settings.system_metric.options.ram" }, { value = "battery", label_key = "settings.system_metric.options.battery" }, { value = "all", label_key = "settings.system_metric.options.all" }]
+  visible_when = { key = "mode", values = ["system"] }
+
+  [[desktop_widget.setting]]
+  key = "system_color"
+  type = "color"
+  label_key = "settings.system_color.label"
+  description_key = "settings.system_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["system"] }
+
+  [[desktop_widget.setting]]
+  key = "system_show_detail"
+  type = "bool"
+  label_key = "settings.system_show_detail.label"
+  description_key = "settings.system_show_detail.description"
+  default = true
+  visible_when = { key = "mode", values = ["system"] }
+
+  [[desktop_widget.setting]]
+  key = "system_show_bar"
+  type = "bool"
+  label_key = "settings.system_show_bar.label"
+  description_key = "settings.system_show_bar.description"
+  default = true
+  visible_when = { key = "mode", values = ["system"] }
+
+  [[desktop_widget.setting]]
+  key = "system_warn_threshold"
+  type = "int"
+  label_key = "settings.system_warn_threshold.label"
+  description_key = "settings.system_warn_threshold.description"
+  default = 90
+  min = 50
+  max = 100
+  visible_when = { key = "mode", values = ["system"] }
+
+  [[desktop_widget.setting]]
+  key = "system_shadow"
+  type = "bool"
+  label_key = "settings.system_shadow.label"
+  description_key = "settings.system_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["system"] }
+
+  [[desktop_widget.setting]]
+  key = "system_width"
+  type = "int"
+  label_key = "settings.system_width.label"
+  description_key = "settings.system_width.description"
+  default = 0
+  min = 0
+  max = 900
+  visible_when = { key = "mode", values = ["system"] }
+
+# ── Media ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "media_show_art"
+  type = "bool"
+  label_key = "settings.media_show_art.label"
+  description_key = "settings.media_show_art.description"
+  default = true
+  visible_when = { key = "mode", values = ["media"] }
+
+  [[desktop_widget.setting]]
+  key = "media_show_progress"
+  type = "bool"
+  label_key = "settings.media_show_progress.label"
+  description_key = "settings.media_show_progress.description"
+  default = true
+  visible_when = { key = "mode", values = ["media"] }
+
+  [[desktop_widget.setting]]
+  key = "media_color"
+  type = "color"
+  label_key = "settings.media_color.label"
+  description_key = "settings.media_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["media"] }
+
+  [[desktop_widget.setting]]
+  key = "media_shadow"
+  type = "bool"
+  label_key = "settings.media_shadow.label"
+  description_key = "settings.media_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["media"] }
+
+  [[desktop_widget.setting]]
+  key = "media_width"
+  type = "int"
+  label_key = "settings.media_width.label"
+  description_key = "settings.media_width.description"
+  default = 340
+  min = 240
+  max = 900
+  visible_when = { key = "mode", values = ["media"] }
+
+# ── World clock ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "world_zones"
+  type = "string_list"
+  label_key = "settings.world_zones.label"
+  description_key = "settings.world_zones.description"
+  default = ["Tokyo=Asia/Tokyo", "Shenyang=Asia/Shanghai", "New York=America/New_York", "London=Europe/London"]
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_show_local"
+  type = "bool"
+  label_key = "settings.world_show_local.label"
+  description_key = "settings.world_show_local.description"
+  default = true
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_local_label"
+  type = "string"
+  label_key = "settings.world_local_label.label"
+  description_key = "settings.world_local_label.description"
+  default = ""
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_show_date"
+  type = "bool"
+  label_key = "settings.world_show_date.label"
+  description_key = "settings.world_show_date.description"
+  default = true
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_date_format"
+  type = "string"
+  label_key = "settings.world_date_format.label"
+  description_key = "settings.world_date_format.description"
+  default = "%A, %B %-d"
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_time_format"
+  type = "string"
+  label_key = "settings.world_time_format.label"
+  description_key = "settings.world_time_format.description"
+  default = ""
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_show_gmt"
+  type = "bool"
+  label_key = "settings.world_show_gmt.label"
+  description_key = "settings.world_show_gmt.description"
+  default = true
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_columns"
+  type = "select"
+  label_key = "settings.world_columns.label"
+  description_key = "settings.world_columns.description"
+  default = "2"
+  options = [{ value = "1", label_key = "settings.world_columns.options.1" }, { value = "2", label_key = "settings.world_columns.options.2" }]
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_color"
+  type = "color"
+  label_key = "settings.world_color.label"
+  description_key = "settings.world_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_secondary_color"
+  type = "color"
+  label_key = "settings.world_secondary_color.label"
+  description_key = "settings.world_secondary_color.description"
+  default = "on_surface_variant"
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_shadow"
+  type = "bool"
+  label_key = "settings.world_shadow.label"
+  description_key = "settings.world_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+  [[desktop_widget.setting]]
+  key = "world_width"
+  type = "int"
+  label_key = "settings.world_width.label"
+  description_key = "settings.world_width.description"
+  default = 300
+  min = 200
+  max = 800
+  visible_when = { key = "mode", values = ["world_clock"] }
+
+# ── Calendar ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "calendar_week_start"
+  type = "select"
+  label_key = "settings.calendar_week_start.label"
+  description_key = "settings.calendar_week_start.description"
+  default = "monday"
+  options = [{ value = "monday", label_key = "settings.calendar_week_start.options.monday" }, { value = "sunday", label_key = "settings.calendar_week_start.options.sunday" }]
+  visible_when = { key = "mode", values = ["calendar"] }
+
+  [[desktop_widget.setting]]
+  key = "calendar_width"
+  type = "int"
+  label_key = "settings.calendar_width.label"
+  description_key = "settings.calendar_width.description"
+  default = 270
+  min = 180
+  max = 520
+  visible_when = { key = "mode", values = ["calendar"] }
+
+  [[desktop_widget.setting]]
+  key = "calendar_color"
+  type = "color"
+  label_key = "settings.calendar_color.label"
+  description_key = "settings.calendar_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["calendar"] }
+
+  [[desktop_widget.setting]]
+  key = "calendar_text_color"
+  type = "color"
+  label_key = "settings.calendar_text_color.label"
+  description_key = "settings.calendar_text_color.description"
+  default = "on_surface"
+  visible_when = { key = "mode", values = ["calendar"] }
+
+  [[desktop_widget.setting]]
+  key = "calendar_shadow"
+  type = "bool"
+  label_key = "settings.calendar_shadow.label"
+  description_key = "settings.calendar_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["calendar"] }
+
+# ── User card ──────────────────────────────────────────────────────────────────
+  [[desktop_widget.setting]]
+  key = "usercard_name"
+  type = "string"
+  label_key = "settings.usercard_name.label"
+  description_key = "settings.usercard_name.description"
+  default = ""
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_avatar"
+  type = "file"
+  label_key = "settings.usercard_avatar.label"
+  description_key = "settings.usercard_avatar.description"
+  default = ""
+  extensions = [".png", ".jpg", ".jpeg", ".webp", ".gif"]
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_show_weather"
+  type = "bool"
+  label_key = "settings.usercard_show_weather.label"
+  description_key = "settings.usercard_show_weather.description"
+  default = true
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_show_uptime"
+  type = "bool"
+  label_key = "settings.usercard_show_uptime.label"
+  description_key = "settings.usercard_show_uptime.description"
+  default = true
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_show_actions"
+  type = "bool"
+  label_key = "settings.usercard_show_actions.label"
+  description_key = "settings.usercard_show_actions.description"
+  default = true
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_color"
+  type = "color"
+  label_key = "settings.usercard_color.label"
+  description_key = "settings.usercard_color.description"
+  default = "primary"
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_shadow"
+  type = "bool"
+  label_key = "settings.usercard_shadow.label"
+  description_key = "settings.usercard_shadow.description"
+  default = false
+  visible_when = { key = "mode", values = ["user_card"] }
+
+  [[desktop_widget.setting]]
+  key = "usercard_width"
+  type = "int"
+  label_key = "settings.usercard_width.label"
+  description_key = "settings.usercard_width.description"
+  default = 330
+  min = 240
+  max = 800
+  visible_when = { key = "mode", values = ["user_card"] }
+
+# Headless weather source: geocode + Open-Meteo, published on "nw.weather".
+# Desktop widgets are separate VMs, so the state channel keeps the weather
+# widget and the user card in sync.
+[[service]]
+id = "weather_service"
+entry = "weather_service.luau"
