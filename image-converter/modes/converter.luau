@@ -18,7 +18,16 @@ local currentInput = nil
 local status = "idle"
 local statusName = ""
 local converting = false
+local resetAt = nil
+local updateInterval = 0
 local render
+
+local function setInterval(value)
+    if value ~= updateInterval then
+        updateInterval = value
+        noctalia.setUpdateInterval(value)
+    end
+end
 
 local function currentFormat()
     return FORMATS[formatIndex]
@@ -159,6 +168,8 @@ local function finish(ok, name, fallback)
     else
         status = "failed"
     end
+    resetAt = noctalia.nowMs() + 5000
+    setInterval(1000)
     render()
 end
 
@@ -175,6 +186,7 @@ local function convertCurrent()
     local format = currentFormat()
     local primary = outputPath(currentInput, format, false)
     converting = true
+    resetAt = nil
     status = "converting"
     render()
 
@@ -197,6 +209,8 @@ local function onChooseImage()
     local argv = pickerCommand()
     if not argv then
         status = "no_picker"
+        resetAt = noctalia.nowMs() + 5000
+        setInterval(1000)
         render()
         return
     end
@@ -221,11 +235,7 @@ local function onPrevFormat()
         return
     end
     formatIndex = ((formatIndex - 2) % #FORMATS) + 1
-    if currentInput then
-        convertCurrent()
-    else
-        render()
-    end
+    render()
 end
 
 local function onNextFormat()
@@ -233,11 +243,7 @@ local function onNextFormat()
         return
     end
     formatIndex = (formatIndex % #FORMATS) + 1
-    if currentInput then
-        convertCurrent()
-    else
-        render()
-    end
+    render()
 end
 
 render = function()
@@ -295,14 +301,27 @@ render = function()
     }))
 end
 
+local function update()
+    if resetAt and noctalia.nowMs() >= resetAt then
+        resetAt = nil
+        status = "idle"
+        statusName = ""
+        currentInput = nil
+        setInterval(5000)
+        render()
+        return
+    end
+    render()
+end
+
 local function start()
-    noctalia.setUpdateInterval(5000)
+    setInterval(5000)
     render()
 end
 
 return {
     start = start,
-    update = render,
+    update = update,
     onChooseImage = onChooseImage,
     onPrevFormat = onPrevFormat,
     onNextFormat = onNextFormat,

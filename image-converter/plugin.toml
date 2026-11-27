@@ -1,7 +1,7 @@
 # Separate Noctalia desktop widget: Card Image Converter.
 id = "nuarthy/image-converter"
 name = "Card Image Converter"
-version = "1.0.3"
+version = "1.0.4"
 plugin_api = 43
 author = "nuarthy"
 license = "MIT"
